@@ -1,0 +1,19 @@
+services:
+  minecraft-server:
+    image: itzg/minecraft-server
+    container_name: mc-server
+    ports:
+      - "25565:25565"
+    environment:
+      # Aceptación obligatoria del Acuerdo de Licencia de Usuario Final
+      - EULA=TRUE
+      # Límite de memoria asignada a la JVM (Java Virtual Machine)
+      - MEMORY=2G
+    volumes:
+      # Persistencia de datos (mundos, configuraciones, inventarios)
+      - mc-data:/data
+    restart: unless-stopped
+
+volumes:
+  mc-data:
+
